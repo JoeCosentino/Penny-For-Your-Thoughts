@@ -5,7 +5,7 @@ const ReactionSchema = new Schema(
     {
         reactionId: {
             type: Schema.Types.ObjectId,
-            default: () => new Types.ObjectId
+            default: () => new Types.ObjectId()
         },
         reactionBody: {
             type: String,
@@ -14,7 +14,7 @@ const ReactionSchema = new Schema(
             maxLength: 280
         },
         username: {
-            type: string,
+            type: String,
             required: true
         },
         createdAt: {
@@ -28,7 +28,7 @@ const ReactionSchema = new Schema(
     }
 );
 
-const ThoughtScehma = new Schema(
+const ThoughtSchema = new Schema(
     {
         thoughtText: {
             type: String,
@@ -43,7 +43,8 @@ const ThoughtScehma = new Schema(
         },
         username: {
             type: String,
-            enum: [User.username]
+            enum: [User.username],
+            required: true
         },
         reactions: [ReactionSchema]
     },

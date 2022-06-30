@@ -7,7 +7,6 @@ const {
     deleteUser
 } = require('../../controllers/user-controller');
 
-// GET and POST at /api/users
 router
     .route('/')
     .get(getAllUser)
