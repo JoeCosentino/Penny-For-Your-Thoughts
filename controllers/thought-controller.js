@@ -16,6 +16,26 @@ const thoughtController = {
             })
     },
 
+    getThoughtById({ params }, res) {
+        Thought.findOne({_id: params.id})
+            .populate({
+                path: 'reactions',
+                select: '-__v'
+            })
+            .select('-__v')
+            .then(dbThoughtData => {
+                if(!dbThoughtData) {
+                    res.json(404).json({ message: 'No thought found with this id!' })
+                    return
+                }
+                res.json(dbThoughtData)
+            })
+            .catch(err => {
+                console.log(err);
+                res.status(400).json(err);
+            });
+    },
+
     // add thought
     addThought({ body }, res) {
         Thought.create(body)
