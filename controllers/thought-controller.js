@@ -41,7 +41,7 @@ const thoughtController = {
 
     updateThought({ params, body }, res) {
         Thought.findOneAndUpdate(
-            { _id: params.userId },
+            { _id: params.id },
             body,
             {new: true}
         )
